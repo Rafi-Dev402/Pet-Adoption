@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-them="light">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,9 @@
           theme: {
             extend: {
               colors: {
-                clifford: '#da373d',
+                headerTxtColor: '#131313',
+                btnBg: '#0E7A81',
+                
               }
             }
           }
@@ -23,16 +25,52 @@
     <style>
         .font-lato{
         font-family: "Lato", serif;
-        font-weight: 400;
-        font-style: normal;
+        
       }
     </style>
 </head>
 <body class="font-lato">
-    <header>
-        <nav>
-            
+    <header class="container md:container lg:container mx-auto py-3 lg:py-8 px-3">
+        <!-- Nav Section -->
+        <nav class="mb-14">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                  <a class="btn btn-ghost "><img src="./images/logo.webp" alt=""> <span class="headerTxtColor text-3xl font-extraboldbold"> Peddy</span></a>
+                </div>
+                <div class="navbar-center hidden  sm:block lg:flex">
+                  <ul class="menu menu-horizontal px-1">
+                    <li><a class="text-gray-6000 text-lg font-medium">Home</a></li>
+                    <li><a class="text-gray-6000 text-lg font-medium">Shop</a></li>
+                    <li><a class="text-gray-6000 text-lg font-medium">Contact</a></li>
+                  </ul>
+                </div>
+                <div class="navbar-end">
+                  <button class="rounded-full p-2 border bg-gray-100"><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/user.png" alt="user"/></button>
+                </div>
+              </div>
         </nav>
+         <!-- Nav Section End-->
+         <!-- Banner section start -->
+          <section>
+            <!-- for text -->
+            <div>
+                <h3 class="text-gray-600 text-center text-xl font-bold mb-7">Bringing Families Together ❤️‍🔥</h3>
+               <div class="flex justify-center items-center mb-8">
+                    <h1 class="text-center headerTxtColor text-6xl lg:text-7xl  font-extrabold max-w-3xl">Your Path to Adoption Starts Here</h1>
+               </div>
+                <div class="flex justify-center items-center mb-9">
+                    <p class="text-gray-800 max-w-3xl text-center text-lg lg:text-base  font-medium">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                </div>
+                <div class="flex justify-center items-center mb-10">
+                    <button class="btn px-7 text-white text-lg font-semibold bg-btnBg">View More</button>
+                </div>
+            </div>
+            <!-- for image -->
+            <div class="flex justify-center items-center">
+                <img src="./images/pet.webp" alt="">
+            </div>
+          </section>
+         <!-- Banner section End -->
     </header>
     <main>
 
