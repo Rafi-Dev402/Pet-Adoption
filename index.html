@@ -24,13 +24,15 @@
     </script>
     <style>
         .font-lato{
-        font-family: "Lato", serif;
+          font-family: "Lato", serif;
+          font-weight: 400;
+          font-style: normal;
         
       }
     </style>
 </head>
 <body class="font-lato">
-    <header class="container md:container lg:container mx-auto py-3 lg:py-8 px-3">
+    <header class="container md:container lg:container mx-auto py-3 lg:py-8 px-3 mb-20">
         <!-- Nav Section -->
         <nav class="mb-14">
             <div class="navbar bg-base-100">
@@ -50,6 +52,7 @@
               </div>
         </nav>
          <!-- Nav Section End-->
+
          <!-- Banner section start -->
           <section>
             <!-- for text -->
@@ -59,10 +62,10 @@
                     <h1 class="text-center headerTxtColor text-6xl lg:text-7xl  font-extrabold max-w-3xl">Your Path to Adoption Starts Here</h1>
                </div>
                 <div class="flex justify-center items-center mb-9">
-                    <p class="text-gray-800 max-w-3xl text-center text-lg lg:text-base  font-medium">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                    <p class="text-gray-800 max-w-3xl text-center text-lg   font-medium">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
                 </div>
                 <div class="flex justify-center items-center mb-10">
-                    <button class="btn px-7 text-white text-lg font-semibold bg-btnBg">View More</button>
+                    <button onclick="scroller()" id="view-btn" class="btn  px-7 text-white text-lg font-semibold bg-btnBg">View More</button>
                 </div>
             </div>
             <!-- for image -->
@@ -71,12 +74,44 @@
             </div>
           </section>
          <!-- Banner section End -->
-    </header>
-    <main>
 
+    </header>
+    <main id="main-section" class="container md:container lg:container mx-auto py-3 lg:py-8 px-3">
+        <h1 class="headerTxtColor text-center text-4xl lg:text-5xl font-extrabold mb-7">Adopt  Your  Best Friend</h1>
+        <div class="flex justify-center items-center mb-12">
+            <p class="text-gray-700 max-w-2xl text-center text-lg   font-medium">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
+        <!-- Button Div -->
+         <div class="grid grid-cols-2 lg:grid-cols-4 justify-center items-center mx-auto gap-2 mb-11">
+            <div class="flex justify-center items-center">
+                <button class="bg-slate-300 px-12 py-4 flex justify-center items-center borderd rounded-xl text-lg font-semibold"><span>Dogs</span> <img src="./images/rabbit.png" alt=""></button>
+            </div>
+            <div class="flex justify-center items-center">
+                <button class="bg-slate-300 px-12 py-4 flex justify-center items-center borderd rounded-xl text-lg font-semibold"><span>Cats</span> <img src="./images/cat.png" alt=""></button>
+            </div>
+            <div class="flex justify-center items-center">
+                <button class="bg-slate-300 px-10 py-4 flex justify-center items-center borderd rounded-xl text-lg font-semibold"><span>Rabbits</span> <img src="./images/rabbit.png" alt=""></button>
+            </div>
+            <div class="flex justify-center items-center">
+                <button class="bg-slate-300 px-12 py-4 flex justify-center items-center borderd rounded-xl text-lg font-semibold"><span>Birds</span> <img src="./images/rabbit.png" alt=""></button>
+            </div>
+         </div>
+         <!-- View Section Start -->
+          <section>
+                <div class="flex justify-between items-center">
+                    <div class="flex justify-center items-center ">
+                        <h3 class="headerTxtColor text-xl lg:text-2xl font-extrabold lg:font-bold">Best Deal For you</h3>
+                    </div>
+                    <div class=" justify-center items-center">
+                        <button class="btn px-7 bg-btnBg  headerTxtColor text-lg font-semibold">Sort by Price</button>
+                    </div>
+                </div>
+          </section>
+         <!-- View Section End -->
     </main>
     <footer>
 
     </footer>
+    <script src="./scripts/app.js"></script>
 </body>
 </html>
