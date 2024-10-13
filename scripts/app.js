@@ -30,15 +30,31 @@ const catagoryBtn = (id)=>{
     },2000)
 }
 // Fetch data Catagory Wise
+//For remove classList
+const removeClasses = ()=>{
+    const btnClasses = document.getElementsByClassName('catagory-btn')
+    console.log(btnClasses)
+    for(let btnClass of btnClasses){
+        console.log(btnClass)
+        btnClass.classList.remove("showActive")
+    }
+}
+removeClasses()
 const catagoryData = async(id)=>{
     try{
         document.getElementById('spinner-1').style.display = 'none'
         const responseCatagoryData = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
         const dataCatagory = await responseCatagoryData.json()
+
         displayAllpetsData(dataCatagory.data);
         dataEmptyHandaling(dataCatagory.data)
 
-        
+        //For Show btn active
+        removeClasses()
+
+        const cataBtn = document.getElementById(`btn-${id}`);
+        cataBtn.classList.remove("bg-slate-100")
+        cataBtn.classList.add("showActive")
     }catch(error){
         console.log("Somthing is Wrong",error)
     }
@@ -78,7 +94,7 @@ const dataEmptyHandaling = (catagoryPetsData)=>{
     }
 }
 
-//Display Fetch Data Start\\
+//Display Fetch Data Start\\---------------------------------------------------------------|||||
 //Display btn Fetch Data \\
 const displayBtnFetchDatas =  (datas)=>{
     const catagoryBtnContainer = document.getElementById('ctagory-btn-container');
@@ -86,7 +102,7 @@ const displayBtnFetchDatas =  (datas)=>{
        const btnDiv = document.createElement('div')
        btnDiv.classList = "flex justify-center items-center"
        btnDiv.innerHTML = `
-            <button onclick="catagoryBtn('${data.category}')"   class="bg-slate-100 px-12 py-4 flex justify-center items-center borderd border-2 rounded-xl text-2xl font-semibold gap-x-2  hover:bg-none   md:hover:bg-none lg:hover:bg-slate-200"> <img class="w-11 h-11" src="${data.category_icon}" alt=""> <span>${data.category}</span> </button>
+            <button id="btn-${data.category}" onclick="catagoryBtn('${data.category}')" class="catagory-btn bg-slate-100 px-12 py-4 flex justify-center items-center borderd border-2 rounded-xl text-2xl font-semibold gap-x-2  hover:bg-none   md:hover:bg-none lg:hover:bg-slate-200"> <img class="w-11 h-11" src="${data.category_icon}" alt=""> <span>${data.category}</span> </button>
        `
        catagoryBtnContainer.appendChild(btnDiv);
     })
@@ -129,7 +145,7 @@ const displayAllpetsData = (petDatas) =>{
                 <hr class="border">
                 <!-- buttons -->
                     <div class="mt-4 flex justify-start items-center gap-x-5">
-                    <button class="borderd px-4 py-2 bg-slate-50 rounded-lg border"><img width="24" height="24" src="https://img.icons8.com/forma-thin/24/facebook-like.png" alt="facebook-like"/></button>
+                    <button onclick="likeBtn('${petdata.image}')" class="borderd px-4 py-2 bg-slate-50 rounded-lg border"><img width="24" height="24" src="https://img.icons8.com/forma-thin/24/facebook-like.png" alt="facebook-like"/></button>
                     <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Adopt</button>
                     <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Details</button>
                     </div>
@@ -139,7 +155,15 @@ const displayAllpetsData = (petDatas) =>{
         cardContainer.appendChild(carddiv) 
     })
 }
-
+const likeBtn = (image)=>{
+    const imgContainer = document.getElementById('image-container')
+    const imgDiv = document.createElement('div')
+    imgDiv.classList = "flex justify-center items-center"
+    imgDiv.innerHTML = `
+        <img class="rounded-lg w-36" src="${image}" alt="">
+    `
+    imgContainer.appendChild(imgDiv)
+}
 
 
 
