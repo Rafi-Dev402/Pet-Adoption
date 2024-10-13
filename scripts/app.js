@@ -39,7 +39,7 @@ const removeClasses = ()=>{
         btnClass.classList.remove("showActive")
     }
 }
-removeClasses()
+
 const catagoryData = async(id)=>{
     try{
         document.getElementById('spinner-1').style.display = 'none'
@@ -145,7 +145,7 @@ const displayAllpetsData = (petDatas) =>{
                 <hr class="border">
                 <!-- buttons -->
                     <div class="mt-4 flex justify-start items-center gap-x-5">
-                    <button onclick="likeBtn('${petdata.image}')" class="borderd px-4 py-2 bg-slate-50 rounded-lg border"><img width="24" height="24" src="https://img.icons8.com/forma-thin/24/facebook-like.png" alt="facebook-like"/></button>
+                    <button id="petId" onclick="likeBtn('${petdata.image}')" class="borderd px-4 py-2 bg-slate-50 rounded-lg border"><img width="24" height="24" src="https://img.icons8.com/forma-thin/24/facebook-like.png" alt="facebook-like"/></button>
                     <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Adopt</button>
                     <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Details</button>
                     </div>
@@ -163,6 +163,8 @@ const likeBtn = (image)=>{
         <img class="rounded-lg w-36" src="${image}" alt="">
     `
     imgContainer.appendChild(imgDiv)
+
+    
 }
 
 
