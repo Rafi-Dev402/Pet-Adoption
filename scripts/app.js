@@ -206,7 +206,7 @@ const displayPetDetailsData = (petDetails) =>{
 
                
                 <div class="modal-action flex justify-center items-center">
-                    <label  for="my_modal_6" class="btn px-36 md:px-52 text-btnBg text-lg font-bold bg-[#0E7A811A]">Cancel</label>
+                    <label  for="my_modal_6" class="btn px-20 md:px-52 text-btnBg text-lg font-bold bg-[#0E7A811A]">Cancel</label>
                 </div>
     
     `
