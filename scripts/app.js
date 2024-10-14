@@ -18,9 +18,7 @@ const allDataFetch = async() =>{
     const petsdata = await resp.json()
     displayAllpetsData(petsdata.pets)
 }
-
-
-
+// For Spinner
 const catagoryBtn = (id)=>{
     document.getElementById('card-container').innerHTML = ""
     document.getElementById('spinner-1').style.display = 'block'
@@ -29,7 +27,7 @@ const catagoryBtn = (id)=>{
         catagoryData(id)
     },2000)
 }
-// Fetch data Catagory Wise
+
 //For remove classList
 const removeClasses = ()=>{
     const btnClasses = document.getElementsByClassName('catagory-btn')
@@ -40,6 +38,7 @@ const removeClasses = ()=>{
     }
 }
 
+// Fetch Catagory Wise Data
 const catagoryData = async(id)=>{
     try{
         document.getElementById('spinner-1').style.display = 'none'
@@ -60,11 +59,18 @@ const catagoryData = async(id)=>{
     }
     
 }
-
+// Fetch Details Data
+const detailsBtnLoad = async(petId) =>{
+   
+    const fetchDetails = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    const detailsData = await fetchDetails.json()
+    displayPetDetailsData(detailsData.petData)
+}
 btnFetchApi()
 allDataFetch()
 
 // Fetch API Section End\\-----------------------------------------------------------------------||||
+// Data Validation
 const dataEmptyHandaling = (catagoryPetsData)=>{
     console.log(catagoryPetsData)
     const cardContainer = document.getElementById('card-container');
@@ -147,7 +153,7 @@ const displayAllpetsData = (petDatas) =>{
                     <div class="mt-4 flex justify-start items-center gap-x-5">
                     <button id="petId" onclick="likeBtn('${petdata.image}')" class="borderd px-4 py-2 bg-slate-50 rounded-lg border"><img width="24" height="24" src="https://img.icons8.com/forma-thin/24/facebook-like.png" alt="facebook-like"/></button>
                     <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Adopt</button>
-                    <button class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Details</button>
+                    <button onclick="detailsBtnLoad('${petdata.petId}')" class="borderd px-5 py-2 bg-slate-50 rounded-lg text-btnBg text-base font-semibold border">Details</button>
                     </div>
             </div>
         
@@ -155,6 +161,7 @@ const displayAllpetsData = (petDatas) =>{
         cardContainer.appendChild(carddiv) 
     })
 }
+// Like Btn image display
 const likeBtn = (image)=>{
     const imgContainer = document.getElementById('image-container')
     const imgDiv = document.createElement('div')
@@ -162,12 +169,49 @@ const likeBtn = (image)=>{
     imgDiv.innerHTML = `
         <img class="rounded-lg w-36" src="${image}" alt="">
     `
-    imgContainer.appendChild(imgDiv)
-
-    
+    imgContainer.appendChild(imgDiv)   
 }
 
+const displayPetDetailsData = (petDetails) =>{
+    console.log(petDetails)
+    const modalContainer = document.getElementById('modal-container')
+    modalContainer.innerHTML = `
+            <div class="flex justify-center items-center mb-6">
+                    <img class="rounded-lg w-[650px] h-[250px] object-fill" src="${petDetails.image}" alt="">
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-headerTxtColor text-center md:text-start">${petDetails.pet_name}</h3>
 
+                <section  class="mb-4">
+                    <div class="flex flex-col md:flex-row gap-0 md:gap-16">
+                        <div>
+                            <div class="flex gap-x-2 mb-2"><img width="18" height="18" src="https://img.icons8.com/plumpy/24/qr-code.png" alt="qr-code"/> <span class="text-gray-600 text-base font-medium">Breed :</span> <span class="text-gray-600 text-base font-medium"></span>${petDetails.breed === undefined || petDetails.breed === null?"Not Found":`${petDetails.breed}`}</div>
+                            <div class="flex gap-x-2 mb-2"><img width="18" height="18" src="https://img.icons8.com/plumpy/24/gender.png" alt="gender"/> <span class="text-gray-600 text-base font-medium">Gender :</span> <span class="text-gray-600 text-base font-medium">${petDetails.gender === undefined || petDetails.gender === null?"Not Found":`${petDetails.gender}`}</span></div>
+                            <div class="flex gap-x-2 mb-2"><img width="18" height="18" src="https://img.icons8.com/forma-light/24/syringe.png" alt="syringe"/> <span class="text-gray-600 text-base font-medium">Vaccinated status:</span> <span class="text-gray-600 text-base font-medium">${petDetails.vaccinated_status === undefined || petDetails.vaccinated_status === null? "Not Found":`${petDetails.vaccinated_status}`}</span></div>
+                        </div>
+                        <div>
+                            <div class="flex gap-x-2 mb-2"><img width="18" height="18" src="https://img.icons8.com/plumpy/24/birth-date.png" alt="birth-date"/> <span class="text-gray-600 text-base font-medium">Birth :</span> <span class="text-gray-600 text-base font-medium">${petDetails.date_of_birth === undefined || petDetails.date_of_birth === null ?"Not Found":`${petDetails.date_of_birth}`}</span></div>
+                            <div class="flex gap-x-2 mb-2"><img width="18" height="18" src="https://img.icons8.com/material-outlined/24/price-tag-usd.png" alt="price-tag-usd"/><span class="text-gray-600 text-base font-semibold">Price :</span> <span class="text-gray-600 text-base font-medium">${petDetails.price === undefined || petDetails.price === null?"Not Available":`${petDetails.price} $`}</span>
+                        </div>
+                    </div>
+                </section>
+                <hr class="border">
+
+                    <div class="mt-4">
+                        <h3 class="text-base font-semibold text-headerTxtColor mb-4">Details Information</h3>
+                        <p class="text-base font-normal text-gray-600">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                            The point of using is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                    </div>
+                
+                
+
+               
+                <div class="modal-action flex justify-center items-center">
+                    <label  for="my_modal_6" class="btn px-36 md:px-52 text-btnBg text-lg font-bold bg-[#0E7A811A]">Cancel</label>
+                </div>
+    
+    `
+    document.getElementById('Showmodal').click()
+}
 
 
 
