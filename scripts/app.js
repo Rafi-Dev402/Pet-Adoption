@@ -80,7 +80,7 @@ const dataEmptyHandaling = (catagoryPetsData)=>{
         
         document.getElementById('card-container').classList.remove("grid")
         const errorDiv = document.createElement('div')
-        errorDiv.classList = "bg-[#13131308] rounded-xl py-12 mx-auto"
+        errorDiv.classList = "bg-[#13131308] rounded-xl py-12 px-10 mx-auto"
         errorDiv.innerHTML = `
 
             <div class="flex justify-center items-center mb-8 ">
